@@ -1,0 +1,3 @@
+[submodule "cloud/packet"]
+	path = cloud/packet
+	url = https://github.com/ngrewe/ansible_packet
