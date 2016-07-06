@@ -116,6 +116,7 @@ before_install:
 install:
   - pip install git+https://github.com/ansible/ansible.git@devel#egg=ansible
   - pip install git+https://github.com/sivel/ansible-testing.git#egg=ansible_testing
+  - pip install git+https://github.com/ngrewe/packet-python.git@ansible
 script:
   - python2.4 -m compileall -fq -x 'cloud/|monitoring/zabbix.*\.py|/dnf\.py|/layman\.py|/maven_artifact\.py|clustering/(consul.*|znode)\.py|notification/pushbullet\.py|database/influxdb/influxdb.*\.py|database/mssql/mssql_db\.py|/letsencrypt\.py|network/f5/bigip.*\.py' .
   - python2.6 -m compileall -fq .
@@ -123,4 +124,5 @@ script:
   - python3.4 -m compileall -fq . -x $(echo "$PY3_EXCLUDE_LIST"| tr ' ' '|')
   - python3.5 -m compileall -fq . -x $(echo "$PY3_EXCLUDE_LIST"| tr ' ' '|')
   - ansible-validate-modules . --exclude 'cloud/azure/azure_rm_deployment\.py'
+  - nosetests ./test/
   #- ./test-docs.sh extras
