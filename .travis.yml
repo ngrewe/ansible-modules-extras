@@ -124,5 +124,5 @@ script:
   - python3.4 -m compileall -fq . -x $(echo "$PY3_EXCLUDE_LIST"| tr ' ' '|')
   - python3.5 -m compileall -fq . -x $(echo "$PY3_EXCLUDE_LIST"| tr ' ' '|')
   - ansible-validate-modules . --exclude 'cloud/azure/azure_rm_deployment\.py'
-  - nosetests ./test/
+  - nosetests ./test/unit
   #- ./test-docs.sh extras
